@@ -1,0 +1,7 @@
+TODO: Some of the tests rely on the return from curl, should be checking the database.
+
+TODO: Improve front end.
+	- Favorites should be shown and editable on some page somewhere.
+	- Favorites should be shown on the homepage for discoverability.
+
+TODO: Improve Testing, and automation, use asserts, or exit when a test fails instead of just printing.

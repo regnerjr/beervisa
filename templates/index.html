@@ -1,0 +1,33 @@
+$def with (beers, session, reviews)
+
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+  <link href="static/stylesheet.css" type="text/css" rel="stylesheet">
+</head>
+
+<h2>Reviews</h2>
+<ul>
+	$for review in reviews:
+		<li>$review.overall : $review.name  $review.location, Reviewed by $review.usr</li>
+</ul>
+<h2>Beers</h2>
+<ul>
+$for beer in beers:
+    <li>Name: $beer.name, Style: $beer.style </li>
+</ul>
+
+$if not session.logged_in:
+	<a href='/new_user'>Add a User</a>
+
+$if not session.logged_in:
+	<form action="/api/login" method="POST">
+		<input class="username" type="text" name="usr" placeHolder="Username"><br />
+		<input class="password" type="password" name="passwd" placeHolder="Password"><br />
+		<input class="submit" type="submit" value="Log in">
+	</form>
+$if session.logged_in:
+	<hr>
+	<a href='/user_home'>Rate & Add Beers</a>
+	<hr>
+	<p>You are currently logged in as $session.usr</p>
+	<a href='/logout'>Log out</a>

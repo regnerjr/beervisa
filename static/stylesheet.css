@@ -1,0 +1,31 @@
+body {
+  font-family: sans-serif;
+  color : blue;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+}
+
+p {
+  color: black;
+}
+
+.username
+{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.password {
+  position: absolute;
+  top: 32px;
+  right: 10px;
+}
+.submit {
+  color: blue;
+  position: absolute;
+  top: 52px;
+  right: 10px;
+}

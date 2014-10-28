@@ -1,0 +1,71 @@
+$def with (username, reviews, glasses, beers)
+
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+	<link href="static/stylesheet.css" type="text/css" rel="stylesheet">
+</head>
+
+<h1>$username's home page</h1>
+
+<h3>Your Reviews</h3>
+	$for review in reviews:
+		<p>$review.beer <br>
+			Palate: $review.palate <br>
+			Taste: $review.taste <br>
+			Appearance: $review.appearance<br>
+			Aroma: $review.aroma<br> 
+			BottleStyle: $review.bottle_style</p>
+
+<hr>
+<h2>Add a new Beer</h2>
+<form method="post" action="/api/add_beer">
+	<p>Name: <input type="text" name="name"></p>
+	<p>IBU: <input type="text" name="ibu"></p>
+   <p>Calories:<input type="text" name="calories"></p>
+   <p>ABV: <input type="text" name="abv"></p>
+   <p>Style:<input type="text" name="style"></p>
+	<p>Brewery Location:<input type="text" name="location">
+	<p>Glass Type:
+		<select name="glass">
+			$for glass in glasses:
+			  <option value="$glass.glass_name">$glass.glass_name</option>
+		</select>
+	</p>
+	<input type="submit" value="Add a New Beer">
+</form>
+
+<hr>
+<h2>Add a New Beer Glass Type</h2>
+<form method="post" action="/api/add_glass">
+	<p>GlassName:<input type="text" name="glass_name"></p>
+	<input type="submit" value="Add new Glass">
+</form>
+<hr>
+<h2> Review a beer </h2>
+<form method='post' action='/api/add_review'>
+	<p>Beer
+		<select name='beer'> 
+		$for beer in beers:
+			<option value="$beer.name">$beer.name</option>
+		</select>
+	</p>
+	<p>Aroma<input type="number" min="1" max="5" value="1" name="aroma"></p>
+	<p>Appearance<input type="number" min="1" max="5" value="1" name="appearance"></p>
+	<p>Taste<input type="number" min="1" max="10" value="1" name="taste"></p>
+	<p>Palate<input type="number" min="1" max="5" value="1" name="palate"></p>
+	<p>Bottle Style<input type="number" min="1" max="5" value="1" name="bottle_style"></p>
+	<input type="submit" value="Add New Review">
+</form>
+<hr>
+<h2>Favorite a beer<h2>
+	<p>Not visible here yet, exists only in the API</p>
+<form method='post' action='/api/fav'>
+	<p>Beer
+		<select name='beer'> 
+		$for beer in beers:
+			<option value="$beer.name">$beer.name</option>
+		</select>
+	</p>	<input type="submit" value="Add New Fav">
+</form>	
+</html>

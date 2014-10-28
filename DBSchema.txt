@@ -1,0 +1,6 @@
+CREATE TABLE beer (id integer primary key autoincrement, ibu int, calories int, abv real, style text, location text, glass_id int, name text, overall real);
+CREATE TABLE favorites (user_id integer not null, beer_id integer not null);
+CREATE TABLE glasses (id integer primary key autoincrement, glass_name text unique not null);
+CREATE TABLE review (id integer primary key autoincrement, aroma integer, appearance integer, taste integer, palate integer, bottle_style integer, beer integer, reviewer integer);
+CREATE TABLE users ( id integer primary key autoincrement, usr text not null, passwd text not null, email text, role integer not null, last_beer text);
+CREATE TABLE week_review ( user_id int, beer_id int, review_date text);
